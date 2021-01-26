@@ -1,7 +1,7 @@
 # Computational-Mathematics-Resources
 I created these resources while I was studying for the computational mathematics course at the University of Pisa
 
-## Generate the level set of a 2D dimensional function
+## Generate the level set of a 2-dimensional function
 
 Once you have opened the Julia interactive command-line, include graphics.jl that contains the level_set function. Level_set has 1 required parameter and then several optional ones:
 * **fun** is the function you want to generate the level set of. Some examples are in quadratic_function. 
