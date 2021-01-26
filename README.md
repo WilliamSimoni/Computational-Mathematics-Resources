@@ -10,3 +10,10 @@ Once you have opened the Julia interactive command-line, include graphics.jl tha
 * **number_of_levels** indicates the number of levels that will be generated.
 * The image will have colored level sets if **color_level** is true. Otherwise, the image will contain only lines.
 
+For instance: 
+```
+  include("graphics.jl")
+  include("quadratic_function.jl")
+  p = level_set(not_positive_definite);
+  plot(p)
+```
