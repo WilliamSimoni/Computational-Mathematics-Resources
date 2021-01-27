@@ -20,3 +20,14 @@ For instance:
 And you will get this image:
 
 ![level set of a non positive quadratic function](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/non_positive_definite_plot.png?raw=true)
+
+Of course, you can define your own function. The only thing that matter is that it must have two inputs: 
+```
+  fun(x,y) = cos(x) + sin(y)^2 + cos(x)^3 + sin(y)^4;
+  p = level_set(fun);
+  plot(p)
+```
+
+The level sets of this thing are these:
+
+![level set of a non positive quadratic function](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/custom_function_plot.png?raw=true)
