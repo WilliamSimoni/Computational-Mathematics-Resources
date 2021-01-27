@@ -17,3 +17,6 @@ For instance:
   p = level_set(not_positive_definite);
   plot(p)
 ```
+And you will get this image:
+
+![level set of a non positive quadratic function](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/non_positive_definite_plot.png?raw=true)
