@@ -1,7 +1,5 @@
 using Plots
 
-#import Pkg; Pkg.add("Plots")
-
 function level_set(fun; level_center = [0,0], rangeX = [-1,1], rangeY = [-1,1], number_of_levels = 50, color_level = true)
     plotly()
     
