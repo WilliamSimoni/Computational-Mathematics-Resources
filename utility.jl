@@ -1,1 +1,1 @@
-wait_for_key(prompt) = (print(stdout, prompt); read(stdin, 1); nothing)
+wait_for_key(prompt) = (print(stdout, prompt); readline(stdin); nothing)
