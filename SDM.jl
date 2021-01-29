@@ -1,10 +1,19 @@
+module SDM
+
 using LinearAlgebra
 using Printf
 
 include("utility.jl")
-include("step_size_methods.jl")
 
-function steepest_descent_method(fun, fun_derivative, starting_point, step_size_params, epsilon)
+export sdm
+
+function sdm(fun, fun_derivative, starting_point, step_size_params, epsilon)
+    type = get(step_size_params, "type", "constant")
+    method = get(SDM_step_size_methods, type, constant_step_size_sdm)
+    return method(fun, fun_derivative, starting_point, step_size_params, epsilon)
+end
+
+function constant_step_size_sdm(fun, fun_derivative, starting_point, step_size_params, epsilon)
     @printf("Press enter to continue with iterations\n")
     @printf("step\t\tposition\t\tgradient_norm\n")
 
@@ -16,8 +25,8 @@ function steepest_descent_method(fun, fun_derivative, starting_point, step_size_
         
         #we move in the opposite direction of the gradient
         d = -gradient
-        #compute the step size
-        alpha = step_size(step_size_params)
+        #step size is constant
+        alpha = get(step_size_params, "step_size", 0.1)
         #move to the next point
         x = x + alpha*d
 
@@ -36,5 +45,54 @@ function steepest_descent_method(fun, fun_derivative, starting_point, step_size_
         #calculate the gradient for the new iteration
         gradient = fun_derivative(x[1], x[2])
     end
+
+    @printf("\n")
+    return x
+end
+
+function quadratic_step_size_sdm(fun, fun_derivative, starting_point, step_size_params, epsilon)
+    @printf("Press enter to continue with iterations\n")
+    @printf("step\t\tposition\t\tgradient_norm\n")
+
+    Q = get(step_size_params, "Q", false)
+    if Q==false error("Q not set in step_size_params"); return; end;
+
+    gradient = fun_derivative(starting_point[1], starting_point[2])
+    x = [starting_point[1], starting_point[2]]
+
+    step_counter = 1
+    while(true)
+        
+        #we move in the opposite direction of the gradient
+        d = -gradient
+        #step size is constant
+        alpha = (norm(d,2)^2)/(d'*Q*d)
+        #move to the next point
+        x = x + alpha*d
+
+        gradient_norm = norm(gradient, 2)
+        @printf("%d\t\t[%f,%f]\t\t%g", step_counter, x[1], x[2], gradient_norm)
+
+        #we stop whenever the norm of the gradient is lower than a certain epsilon
+        if (gradient_norm < epsilon)
+            break
+        end
+        
+        wait_for_key("")
+
+        step_counter += 1
+
+        #calculate the gradient for the new iteration
+        gradient = fun_derivative(x[1], x[2])
+    end
+
+    @printf("\n")
+    return x
+end
+
+SDM_step_size_methods = Dict([
+    ("constant", constant_step_size_sdm), 
+    ("quadratic", quadratic_step_size_sdm)
+])
 
 end
