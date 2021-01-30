@@ -30,7 +30,7 @@ Of course, you can define your own function. The only thing that matter is that 
 
 The level sets of this thing are these:
 
-![level set of a non positive quadratic function](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/custom_function_plot.png?raw=true)
+![level set of function cos(x) + sin(y)^2 + cos(x)^3 + sin(y)^4](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/custom_function_plot.png?raw=true)
 
 ## Use Steep Descent Algorithm (SDM)
 
@@ -72,6 +72,23 @@ We can finally execute the method setting the starting_point to [-1,1], epsilon 
 ```
 
 ## Visualize the Steep Descent Algorithm (SDM)
+Of course, you can visualize the algorithm in action. You just need to generate the level sets of f, and the game is done (note that display_g is not set to false):
+
+``` julia
+  include("graphics.jl")
+  level_set(f);
+  sdm(f, f_derivative, [1,-1], constant, 1)
+```
+
+This is the result:
+
+![execution of the gradient](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/gradient_execution.PNG?raw=true)
+
+You can apply again the algorithm on a different point:
+
+![execution of the gradient](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/gradient_execution_2.PNG?raw=true)
+
+And if you want to clean the plot, you have to create again the level set.
 
 
 
