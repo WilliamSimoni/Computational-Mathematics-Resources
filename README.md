@@ -63,12 +63,15 @@ The step_size_params templates are defined in step_size_methods. As you will not
 
 ``` julia
   include("step_size_methods.jl")
-  constant("step_size") = 0.2
+  constant["step_size"] = 0.001
 ```
 
-We can finally execute the method setting the starting_point to [-1,1], epsilon to 1e-10 and display_g=false:
-("step_size") = 0.2
+We can finally execute the method setting the starting_point to [-1,1], epsilon to 1 and display_g=false:
+``` julia
+  x = sdm(f, f_derivative, [1,-1], constant, 1, display_g=false)
+```
 
+## Visualize the Steep Descent Algorithm (SDM)
 
 
 
