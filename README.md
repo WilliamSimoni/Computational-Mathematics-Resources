@@ -46,7 +46,7 @@ You can now call the sdm function that has the following arguments:
 * **fun_derivative** is the derivative of **fun**.
 * **starting_point** is the point from which the algorithm will start. 
 * **step_size_params** is a dictionary object in which you define how the algorithm is going determining the step size. 
-* **epsilon** is a small number. When the norm of the gradient becomes smaller than **epsilon**, the algorithm stops.
+* **epsilon** is a number. When the norm of the gradient becomes smaller than **epsilon**, the algorithm stops.
 * **display_g** is an optional boolean parameter. If true the algorithm will print the steps. (Defaults to true)
 
 This seems a mess. So let us try to define everything we need to apply this algorithm. First thing first, we need to define a function and its derivative (some examples are in quadratic_function.jl). In this example, will we define the Rosenbrock function (with a = 1 and b = 100):
