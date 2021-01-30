@@ -59,7 +59,7 @@ This seems a mess. So let us try to define everything we need to apply this algo
   ];
 ```
 
-The step_size_params templates are defined in step_size_methods. As you will notice, every method type has its own name and properties. For instance, we could choose the constant method and we set the step_size to 0.2 (defaults to 0.1):
+The step_size_params templates are defined in step_size_methods. As you will notice, every method type has its own name and properties. For instance, we could choose the constant method and set the step_size to 0.001 (defaults to 0.1):
 
 ``` julia
   include("step_size_methods.jl")
