@@ -8,13 +8,13 @@ include("graphics.jl")
 
 #export sdm
 
-function sdm(fun, fun_derivative, starting_point, step_size_params, epsilon)
+function sdm(fun, fun_derivative, starting_point, step_size_params, epsilon; display_g=true)
     type = get(step_size_params, "type", "constant")
     method = get(SDM_step_size_methods, type, constant_step_size_sdm)
-    return method(fun, fun_derivative, starting_point, step_size_params, epsilon)
+    return method(fun, fun_derivative, starting_point, step_size_params, epsilon, display_g)
 end
 
-function constant_step_size_sdm(fun, fun_derivative, starting_point, step_size_params, epsilon)
+function constant_step_size_sdm(fun, fun_derivative, starting_point, step_size_params, epsilon, display_g)
     @printf("Press enter to continue with iterations\n")
     @printf("step\t\tposition\t\tgradient_norm\n")
 
@@ -30,11 +30,13 @@ function constant_step_size_sdm(fun, fun_derivative, starting_point, step_size_p
         alpha = get(step_size_params, "step_size", 0.1)
         #move to the next point
         movement = alpha*d
-        display(add_vector(x, movement))
+        if display_g
+            display(add_vector(x, movement))
+        end
         x = x + movement
 
         gradient_norm = norm(gradient, 2)
-        @printf("%d\t\t[%f,%f]\t\t%g", step_counter, x[1], x[2], gradient_norm)
+        @printf("%d\t\t[%g,%g]\t\t%g", step_counter, x[1], x[2], gradient_norm)
 
         #we stop whenever the norm of the gradient is lower than a certain epsilon
         if (gradient_norm < epsilon)
@@ -53,7 +55,7 @@ function constant_step_size_sdm(fun, fun_derivative, starting_point, step_size_p
     return x
 end
 
-function quadratic_step_size_sdm(fun, fun_derivative, starting_point, step_size_params, epsilon)
+function quadratic_step_size_sdm(fun, fun_derivative, starting_point, step_size_params, epsilon, display_g)
     @printf("Press enter to continue with iterations\n")
     @printf("step\t\tposition\t\tgradient_norm\n")
 
@@ -72,7 +74,9 @@ function quadratic_step_size_sdm(fun, fun_derivative, starting_point, step_size_
         alpha = (norm(d,2)^2)/(d'*Q*d)
         #move to the next point
         movement = alpha*d
-        display(add_vector(x, movement))
+        if display_g
+            display(add_vector(x, movement))
+        end
         x = x + movement
 
         gradient_norm = norm(gradient, 2)
