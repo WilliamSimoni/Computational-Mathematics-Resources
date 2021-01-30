@@ -88,7 +88,7 @@ You can apply again the algorithm on a different point:
 
 ![execution of the gradient](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/gradient_execution_2.PNG?raw=true)
 
-And if you want to clean the plot, you have to create again the level set.
+And if you want to clean the plot, you have to create again the level sets.
 
 
 
