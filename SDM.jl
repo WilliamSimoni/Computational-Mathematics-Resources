@@ -1,11 +1,12 @@
-module SDM
+#module SDM
 
 using LinearAlgebra
 using Printf
 
 include("utility.jl")
+include("graphics.jl")
 
-export sdm
+#export sdm
 
 function sdm(fun, fun_derivative, starting_point, step_size_params, epsilon)
     type = get(step_size_params, "type", "constant")
@@ -28,7 +29,9 @@ function constant_step_size_sdm(fun, fun_derivative, starting_point, step_size_p
         #step size is constant
         alpha = get(step_size_params, "step_size", 0.1)
         #move to the next point
-        x = x + alpha*d
+        movement = alpha*d
+        display(add_vector(x, movement))
+        x = x + movement
 
         gradient_norm = norm(gradient, 2)
         @printf("%d\t\t[%f,%f]\t\t%g", step_counter, x[1], x[2], gradient_norm)
@@ -68,7 +71,9 @@ function quadratic_step_size_sdm(fun, fun_derivative, starting_point, step_size_
         #best step size, if the function is a quadratic function
         alpha = (norm(d,2)^2)/(d'*Q*d)
         #move to the next point
-        x = x + alpha*d
+        movement = alpha*d
+        display(add_vector(x, movement))
+        x = x + movement
 
         gradient_norm = norm(gradient, 2)
         @printf("%d\t\t[%f,%f]\t\t%g", step_counter, x[1], x[2], gradient_norm)
@@ -95,4 +100,4 @@ SDM_step_size_methods = Dict([
     ("quadratic", quadratic_step_size_sdm)
 ])
 
-end
+#end
