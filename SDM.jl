@@ -1,4 +1,4 @@
-#module SDM
+module SDM
 
 using LinearAlgebra
 using Printf
@@ -6,7 +6,7 @@ using Printf
 include("utility.jl")
 include("graphics.jl")
 
-#export sdm
+export sdm
 
 function sdm(fun, fun_derivative, starting_point, step_size_params, epsilon; display_g=true)
     type = get(step_size_params, "type", "constant")
@@ -104,4 +104,4 @@ SDM_step_size_methods = Dict([
     ("quadratic", quadratic_step_size_sdm)
 ])
 
-#end
+end
