@@ -65,7 +65,7 @@ function quadratic_step_size_sdm(fun, fun_derivative, starting_point, step_size_
         
         #we move in the opposite direction of the gradient
         d = -gradient
-        #step size is constant
+        #best step size, if the function is a quadratic function
         alpha = (norm(d,2)^2)/(d'*Q*d)
         #move to the next point
         x = x + alpha*d
