@@ -11,7 +11,7 @@ Once you have opened the Julia interactive command-line, include graphics.jl tha
 * The image will have colored level sets if **color_level** is true. Otherwise, the image will contain only lines.
 
 For instance: 
-```
+``` julia
   include("graphics.jl")
   include("quadratic_function.jl")
   p = level_set(not_positive_definite);
@@ -22,7 +22,7 @@ And you will get this image:
 ![level set of a non positive quadratic function](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/non_positive_definite_plot.png?raw=true)
 
 Of course, you can define your own function. The only thing that matter is that it must have two inputs: 
-```
+``` julia
   fun(x,y) = cos(x) + sin(y)^2 + cos(x)^3 + sin(y)^4;
   p = level_set(fun);
   plot(p)
@@ -31,3 +31,44 @@ Of course, you can define your own function. The only thing that matter is that 
 The level sets of this thing are these:
 
 ![level set of a non positive quadratic function](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/custom_function_plot.png?raw=true)
+
+## Use Steep Descent Algorithm (SDM)
+
+The SDM method implementation is included in the SDM.jl file. So, once you have opened the Julia interactive command-line, exec the following commands:
+
+``` julia
+  include("SDM.jl");
+  using .SDM
+```
+
+You can now call the sdm function that has the following arguments:
+* **fun** is the function (of two arguments) you want to find the minimum of.
+* **fun_derivative** is the derivative of **fun**.
+* **starting_point** is the point from which the algorithm will start. 
+* **step_size_params** is a dictionary object in which you define how the algorithm is going determining the step size. 
+* **epsilon** is a small number. When the norm of the gradient becomes smaller than **epsilon**, the algorithm stops.
+* **display_g** is an optional boolean parameter. If true the algorithm will print the steps. (Defaults to true)
+
+This seems a mess. So let us try to define everything we need to apply this algorithm. First thing first, we need to define a function and its derivative (some examples are in quadratic_function.jl). In this example, will we define the Rosenbrock function (with a = 1 and b = 100):
+
+``` julia
+  f(x,y) = (1-x)^2 + 100(y-x^2)^2;
+  f_derivative(x,y) = [
+       2 * (200x^3 - 200x*y + x - 1)
+       200 * (y - x^2)
+  ];
+```
+
+The step_size_params templates are defined in step_size_methods. As you will notice, every method type has its own name and properties. For instance, we could choose the constant method and we set the step_size to 0.2 (defaults to 0.1):
+
+``` julia
+  include("step_size_methods.jl")
+  constant("step_size") = 0.2
+```
+
+We can finally execute the method setting the starting_point to [-1,1], epsilon to 1e-10 and display_g=false:
+("step_size") = 0.2
+
+
+
+
