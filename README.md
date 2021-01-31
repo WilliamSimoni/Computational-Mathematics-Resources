@@ -5,7 +5,7 @@ I created these resources while I was studying for the computational mathematics
 
 1. [Generate the level sets of a 2-dimensional function](https://github.com/WilliamSimoni/Computational-Mathematics-Resources#generate-the-level-sets-of-a-2-dimensional-function)
 2. [Use Steepest Descent Algorithm (SDM)](https://github.com/WilliamSimoni/Computational-Mathematics-Resources#use-steep-descent-algorithm-sdm)
-3. [UVisualize the Steepest Descent Algorithm](https://github.com/WilliamSimoni/Computational-Mathematics-Resources#visualize-the-steep-descent-algorithm-sdm)
+3. [Visualize the Steepest Descent Algorithm](https://github.com/WilliamSimoni/Computational-Mathematics-Resources#visualize-the-steep-descent-algorithm-sdm)
 
 
 ## Generate the level sets of a 2-dimensional function
