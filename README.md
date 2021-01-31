@@ -71,7 +71,7 @@ We can finally execute the method setting the starting_point to [-1,1], epsilon 
   x = sdm(f, f_derivative, [1,-1], constant, 1, display_g=false)
 ```
 
-## Visualize the Steep Descent Algorithm (SDM)
+### Visualize the Steep Descent Algorithm (SDM)
 Of course, you can visualize the algorithm in action. You just need to generate the level sets of f, and the game is done (note that display_g is not set to false):
 
 ``` julia
