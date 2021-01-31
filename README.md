@@ -1,5 +1,12 @@
 # Computational-Mathematics-Resources
-I created these resources while I was studying for the computational mathematics course at the University of Pisa
+I created these resources while I was studying for the computational mathematics course at the University of Pisa.
+
+## Table of contents
+
+1. [Generate the level sets of a 2-dimensional function](https://github.com/WilliamSimoni/Computational-Mathematics-Resources#generate-the-level-sets-of-a-2-dimensional-function)
+2. [Use Steepest Descent Algorithm (SDM)](https://github.com/WilliamSimoni/Computational-Mathematics-Resources#use-steep-descent-algorithm-sdm)
+3. [UVisualize the Steepest Descent Algorithm](https://github.com/WilliamSimoni/Computational-Mathematics-Resources#visualize-the-steep-descent-algorithm-sdm)
+
 
 ## Generate the level sets of a 2-dimensional function
 
@@ -32,7 +39,7 @@ The level sets of this thing are these:
 
 ![level set of function cos(x) + sin(y)^2 + cos(x)^3 + sin(y)^4](https://github.com/WilliamSimoni/Computational-Mathematics-Resources/blob/main/images/custom_function_plot.png?raw=true)
 
-## Use Steep Descent Algorithm (SDM)
+## Use Steepest Descent Algorithm (SDM)
 
 The SDM method implementation is included in the SDM.jl file. So, once you have opened the Julia interactive command-line, exec the following commands:
 
@@ -71,7 +78,7 @@ We can finally execute the method setting the starting_point to [-1,1], epsilon 
   x = sdm(f, f_derivative, [1,-1], constant, 1, display_g=false)
 ```
 
-### Visualize the Steep Descent Algorithm (SDM)
+### Visualize the Steepest Descent Algorithm (SDM)
 Of course, you can visualize the algorithm in action. You just need to generate the level sets of f, and the game is done (note that display_g is not set to false):
 
 ``` julia
